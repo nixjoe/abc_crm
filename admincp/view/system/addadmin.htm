@@ -1,0 +1,51 @@
+<!--{template header}-->
+<br/>
+<h5>添加管理员</h5><br />
+管理员名称：<input type="text" name="name" id="name" /><br />
+管理员密码：<input type="password" name="pwd1" id="pwd1" /><br />
+确认密码：&nbsp;&nbsp;&nbsp;<input type="password" name="pwd2" id="pwd2" /><br />
+<input class="btn btn-info" type="button" value="添加" id="submit"/>
+<span id="info" style="margin-left: 60px;"></span>
+<!--{template footer}-->
+<script>
+  $(document).ready(function() {
+	 $("#addadmin").attr("class", "active");
+	 $("#submit").click(function() {
+		 name = $("#name").val();
+		 pwd1 = $("#pwd1").val();
+		 pwd2 = $("#pwd2").val();
+		 $("#info").html("");
+		 if(!name) {
+			 $("<span style='color: red'>请输入管理员名称!</span>").appendTo($("#info"));
+			 $("#name").focus();
+			 return;
+		 }
+		 if(!pwd1) {
+			 $("<span style='color: red'>请输入密码</span>").appendTo($("#info"));
+			 $("#pwd1").focus();
+			 return;
+		 }
+		 if(!pwd2) {
+			 $("<span style='color: red'>请确认密码</span>").appendTo($("#info"));
+			 $("#pwd2").focus();
+			 return;
+		 }
+		 if(pwd1 !== pwd2) {
+			 $("<span style='color: red'>两次密码输入不一致，请重新输入！</span>").appendTo($("#info"));
+			 $("#pwd2").select();
+			 return;
+		 }
+		 $.post('admincp.php?mod=system&act=addadmin&type=list', { name: name, password: pwd1 }, function(data) {
+			 if(data == 1) {
+				 $("<span style='color: red'>该名称已存在,请重新输入!</span>").appendTo($("#info"));
+			 } else if(data == 2) {
+				 $("<span style='color: green'>添加成功！</span>").appendTo($("#info"));
+				 location.href='admincp.php?mod=system&act=viewadmin';
+			 } else {
+				 $("<span style='color: red'>添加失败！</span>").appendTo($("#info"));
+			 }
+			 
+		 })
+	 });
+  });
+</script>

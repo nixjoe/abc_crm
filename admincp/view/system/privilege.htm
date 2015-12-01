@@ -1,0 +1,254 @@
+<!--{template header}-->
+<br/>
+<h5>权限管理</h5><br />
+选择用户：
+<select id="name" name="name">
+	<option value="">请选择用户</option>
+	<!--{loop $admins $admin}-->
+	<option value="{$admin['name']}">{$admin['name']}</option>
+	<!--{/loop}-->
+</select><br /><br />
+<table>
+	<tr>
+		<td align="left" valign="top" width="170">
+		<div><input class="user" name="title" type="checkbox" value=""><b>玩家信息</b><br />
+		<input name="user" id="transaction" value="user,transaction" type="checkbox">充值信息<br />
+		<input name="user" id="academy" value="user,academy" type="checkbox">科技信息<br />
+		<input name="user" id="base" value="user,base" type="checkbox">基地信息<br />
+		<input name="user" id="basemodify" value="user,basemodify" type="checkbox">基地信息修改<br />
+		<input name="user" id="battlelog" value="user,battlelog" type="checkbox">防守作战记录<br />
+		<input name="user" id="battlelogattack" value="user,battlelogattack" type="checkbox">攻击作战记录<br />
+		<input name="user" id="minelog" value="user,minelog" type="checkbox">矿战记录<br />
+		<input name="user" id="arenalog" value="user,arenalog" type="checkbox">竞技场记录<br />
+		<input name="user" id="building" value="user,building" type="checkbox">建筑信息<br />
+		<input name="user" id="turrets" value="user,turrets" type="checkbox">炮塔信息<br />
+		<input name="user" id="platform" value="user,platform" type="checkbox">平台信息<br />
+		<input name="user" id="purchase" value="user,purchase" type="checkbox">消费信息<br />
+		<input name="user" id="quest" value="user,quest" type="checkbox">任务信息<br />
+		<input name="user" id="store" value="user,store" type="checkbox">商店信息<br />
+		<input name="user" id="unit" value="user,unit" type="checkbox">士兵信息<br />
+		<input name="user" id="user" value="user,user" type="checkbox">玩家信息<br />
+		<input name="user" id="wm" value="user,wm" type="checkbox">PVE信息<br />
+		<input name="user" id="union" value="user,union" type="checkbox">联盟信息<br />
+		<input name="user" id="active" value="user,active" type="checkbox">邀请信息<br />
+		<input name="user" id="heroes" value="user,heroes" type="checkbox">英雄信息<br />
+		<input name="user" id="heroesmodify" value="user,heroesmodify" type="checkbox">英雄信息修改<br />
+		<input name="user" id="achievement" value="user,achievement" type="checkbox">成就信息<br />
+		<input name="user" id="remove" value="user,remove" type="checkbox">基地数据删除<br />
+		<input name="user" id="modify" value="user,modify" type="checkbox">基地数据修改<br />
+		<input name="user" id="heroescard" value="user,heroescard" type="checkbox">英雄指挥卡信息<br />
+		<input name="user" id="blockpuid" value="user,blockpuid" type="checkbox">设备号封禁<br />
+		</div>
+		</td>
+		<td align="left" valign="top" width="170">
+		<div><input class="customer" name="title" type="checkbox" value=""><b>客服支撑</b><br />
+		<input name="customer" id="helper" value="customer,helper" type="checkbox">客服帮助<br />
+		<input name="customer" id="complain" value="customer,complain" type="checkbox">投诉信息<br />
+		<input name="customer" id="modcoins" value="customer,modcoins" type="checkbox">订单管理<br />
+		<input name="customer" id="modresource" value="customer,modresource" type="checkbox">修改资源<br />
+		<input name="customer" id="usermanager" value="customer,usermanager" type="checkbox">用户管理<br />
+		<input name="customer" id="weapons" value="customer,weapons" type="checkbox">武器管理<br />
+		<input name="customer" id="props" value="customer,props" type="checkbox">卡片管理<br />
+		<input name="customer" id="vip" value="customer,vip" type="checkbox">vip管理<br />
+		<input name="customer" id="audit" value="customer,audit" type="checkbox">操作审计<br />
+		<input name="customer" id="rank" value="customer,rank" type="checkbox">排行榜<br />
+		<input name="customer" id="firstpay" value="customer,firstpay" type="checkbox">首充礼包<br />
+		<input name="customer" id="unbind" value="customer,unbind" type="checkbox">解除绑定<br />
+		<input name="customer" id="recruit" value="customer,recruit" type="checkbox">应征版主<br />
+		<input name="customer" id="ios7bind" value="customer,ios7bind" type="checkbox">ios7绑定<br />
+		</div>
+		</td>
+		<td align="left" valign="top" width="170">
+		<div><input class="product" name="title" type="checkbox" value=""><b>产品支撑</b><br />
+		<input name="product" id="dailypurchase" value="product,dailypurchase" type="checkbox">每日付费统计<br />
+		<input name="product" id="valuestats" value="product,valuestats" type="checkbox">商业价值统计<br />
+		<input name="product" id="retention" value="product,retention" type="checkbox">留存分析<br />
+		<input name="product" id="rookieguide" value="product,rookieguide" type="checkbox">新手向导统计<br />
+		<input name="product" id="paidpurchase" value="product,paidpurchase" type="checkbox">游戏币消耗<br />
+		<input name="product" id="levellifecircle" value="product,levellifecircle" type="checkbox">等级生命周期分析<br />
+		<input name="product" id="questlifecircle" value="product,questlifecircle" type="checkbox">任务生命周期分析<br />
+		<input name="product" id="pvelifecircle" value="product,pvelifecircle" type="checkbox">PVE生命周期分析<br />
+		<input name="product" id="pvplifecircle" value="product,pvplifecircle" type="checkbox">PVP生命周期分析<br />
+		<input name="product" id="battle" value="product,battle" type="checkbox">战斗分析<br />
+		<input name="product" id="costrest" value="product,costrest" type="checkbox">资源消耗存量统计<br />
+		<input name="product" id="dailyuser" value="product,dailyuser" type="checkbox">每日用户行为分析<br />
+		<input name="product" id="customreport" value="product,customreport" type="checkbox">自定义报表<br />
+		<input name="product" id="levelstats" value="product,levelstats" type="checkbox">活跃用户等级分布<br />
+		<input name="product" id="consumecoins" value="product,consumecoins" type="checkbox">消费统计<br />
+		<input name="product" id="loselevel" type="checkbox" value="product,loselevel">流失等级统计<br />
+		<input name="product" id="versiondistribution" type="checkbox" value="product,versiondistribution">版本分布<br />
+		</div>
+		</td>
+		<td align="left" valign="top" width="170">
+		<div><input class="function" name="title" type="checkbox" value=""><b>功能统计</b><br />
+		<input name="function" id="vipstats" type="checkbox" value="function,vipstats">VIP功能统计<br />
+		<input name="function" id="invitationstats" type="checkbox" value="function,invitationstats">社交邀请功能统计<br />
+		<input name="function" id="protectstats" type="checkbox" value="function,protectstats">保护功能统计<br />
+		<input name="function" id="queststats" type="checkbox" value="function,queststats">任务统计<br />
+		<input name="function" id="gift" type="checkbox" value="function,gift">领奖统计<br />
+		<input name="function" id="loadlose" type="checkbox" value="function,loadlose">加载流失统计<br />
+		<input name="function" id="pveactivity" type="checkbox" value="function,pveactivity">PVE活动统计<br />
+		<input name="function" id="smasheggs" type="checkbox" value="function,smasheggs">砸金蛋统计<br />
+		<input name="function" id="tiger" type="checkbox" value="function,tiger">钛矿淘金统计<br />
+		<input name="function" id="socialshare" type="checkbox" value="function,socialshare">分享有礼统计<br />
+		<input name="function" id="defense" type="checkbox" value="function,defense">防御活动统计<br />
+		<input name="function" id="remaingold" type="checkbox" value="function,remaingold">剩余金币统计<br />
+		</div>
+		</td>
+		<td align="left" valign="top" width="170">
+		<div><input class="operation" name="title" type="checkbox" value=""><b>运营支撑</b><br />
+		<input name="operation" id="income" value="operation,income" type="checkbox">收入分析<br />
+		<input name="operation" id="toppaidusers" value="operation,toppaidusers" type="checkbox">付费最多用户<br />
+		<input name="operation" id="userstage" value="operation,userstage" type="checkbox">用户管理<br />
+		<input name="operation" id="report" value="operation,report" type="checkbox">举报信息<br />
+		<input name="operation" id="suspicious" value="operation,suspicious" type="checkbox">可疑用户<br />
+		<input name="operation" id="paymoney" value="operation,paymoney" type="checkbox">可疑付费<br />
+		<input name="operation" id="changestage" value="operation,changestage" type="checkbox">封禁用户<br />
+		<input name="operation" id="cheatuser" value="operation,cheatuser" type="checkbox">作弊匹配<br />
+		<input name="operation" id="deleteuser" value="operation,deleteuser" type="checkbox">删除用户<br />
+		<input name="operation" id="findbypuid" value="operation,findbypuid" type="checkbox">查找用户平台ID<br />
+		<input name="operation" id="findbyname" value="operation,findbyname" type="checkbox">查找用户姓名<br />
+		<input name="operation" id="findbyemail" value="operation,findbyemail" type="checkbox">查找用户email<br />
+		<input name="operation" id="pvpbinduser" value="operation,pvpbinduser" type="checkbox">PVP绑定用户<br />
+		<input name="operation" id="pay" value="operation,pay" type="checkbox">付费管理<br />
+		<input name="operation" id="sendmessage" value="operation,sendmessage" type="checkbox">发送消息<br />
+		<input name="operation" id="email" value="operation,email" type="checkbox">邮件<br />
+		<input name="operation" id="rewardfind" value="operation,rewardfind" type="checkbox">发奖审计<br />
+		<input name="operation" id="rewarddetail" value="operation,rewarddetail" type="checkbox">领奖查询<br />
+		<input name="operation" id="emailaward" value="operation,emailaward" type="checkbox">邮件自定义奖励<br />
+		<input name="operation" id="emailfind" value="operation,emailfind" type="checkbox">邮件奖励查询<br />
+		<input name="operation" id="channelmail" value="operation,channelmail" type="checkbox">渠道邮件<br />
+		<input name="operation" id="sendnotice" value="operation,sendnotice" type="checkbox">公告<br />
+		<input name="operation" id="tmall" value="operation,tmall" type="checkbox">商城礼包配置<br />
+		<input name="operation" id="tview" value="operation,tview" type="checkbox">商城查看<br />
+		<input name="operation" id="tmall2" value="operation,tmall2" type="checkbox">限时商城配置<br />
+		<input name="operation" id="tview2" value="operation,tview2" type="checkbox">限时商城查看<br />
+		<input name="operation" id="startpage" value="operation,startpage" type="checkbox">开始页面<br />
+		<input name="operation" id="key" value="operation,key" type="checkbox">激活码<br />
+		<input name="operation" id="globalpk" value="operation,globalpk" type="checkbox">全服竞技场<br />
+		<input name="operation" id="payevent" value="operation,payevent" type="checkbox">付费事件配置<br />
+		<input name="operation" id="payview" value="operation,payview" type="checkbox">付费活动配置<br />
+		<input name="operation" id="uniongift" value="operation,uniongift" type="checkbox">联盟礼包<br />
+		<input name="operation" id="globalclan" value="operation,globalclan" type="checkbox">跨服联盟战<br />
+		<input name="operation" id="league" value="operation,league" type="checkbox">红警联赛<br />
+		<input name="operation" id="worldcup" value="operation,worldcup" type="checkbox">世界杯<br />
+		<input name="operation" id="activitycenter" value="operation,activitycenter" type="checkbox">活动中心<br />
+		<input name="operation" id="remove" value="operation,remove" type="checkbox">删除数据（邮件）<br />
+		</div>
+		</td>
+		<td align="left" valign="top" width="170">
+		<div><input class="system" name="title" type="checkbox" value=""><b>系统管理</b><br />
+		<input name="system" id="version" value="system,version" type="checkbox">版本控制<br />
+		<input name="system" id="viewadmin" value="system,viewadmin" type="checkbox">查看管理员<br />
+		<input name="system" id="addadmin" value="system,addadmin" type="checkbox">添加管理员<br />
+		<input name="system" id="privilege" value="system,privilege" type="checkbox">权限管理<br />
+		<input name="system" id="password" value="system,password" type="checkbox">密码管理<br />
+		<input name="system" id="resetpwd" value="system,resetpwd" type="checkbox">密码重置<br />
+		<input name="system" id="deleteadmin" value="system,deleteadmin" type="checkbox">删除管理员<br />
+		<input name="system" id="menu" value="system,menu" type="checkbox">菜单排序</div>
+		<input name="system" id="facebook" value="system,facebook" type="checkbox">facebook活动配置<br />
+		<input name="system" id="activities" value="system,activities" type="checkbox">活动中心配置<br />
+		<input name="system" id="service" value="system,service" type="checkbox">开服</div>
+		</td>
+		<td align="left" valign="top" width="170">
+		<div><input class="monitor" name="title" type="checkbox" value=""><b>系统监控</b><br />
+		<input name="monitor" id="memcached" value="monitor,memcached" type="checkbox">memcached<br />
+		<input name="monitor" id="apc" value="monitor,apc" type="checkbox">apc</div>
+		</td>
+		<td align="left" valign="top" width="170">
+		<div><input class="stats" name="title" type="checkbox" value=""><b>统计</b><br />
+		<input name="stats" id="index" value="stats,index" type="checkbox">总览<br/>
+		<input name="stats" id="newuser" value="stats,newuser" type="checkbox">新用户分析<br/>
+		<input name="stats" id="income" value="stats,income" type="checkbox">收入分析<br/>
+		<input name="stats" id="purchase" value="stats,purchase" type="checkbox">消费分析<br/>
+		<input name="stats" id="audit" value="stats,audit" type="checkbox">审计<br/>
+		</div>
+		</td>
+		<td align="left" valign="top" width="170">
+		<div><input class="processfile" name="title" type="checkbox" value=""><b>文件管理</b><br />
+		<input name="processfile" id="makefile" value="processfile,makefile" type="checkbox">定制文件<br />
+		</div>
+		</td>
+	</tr>
+</table><br />
+<input class="btn btn-info" type="button" id="confirm" value="确认" />&nbsp;&nbsp;
+<span id="info"></span>
+<!--{template footer}-->
+<script>
+$(document).ready(function() {
+	$("#privilege").attr("class", "active");
+	$("#name").change(function() {
+		$("input[type=checkbox]").each(function() {
+			$(this).removeAttr("checked");
+		});
+		var value = $(this).val();
+		$.post('admincp.php?mod=system&act=search&type=list', { name: value }, function(data) {
+			$.each(data, function(i, v) {
+				$.each(v, function(j, u) {
+					$("input[type=checkbox]").each(function() {
+						if($(this).attr("id") == u) {
+							$(this).attr("checked", true);
+						}
+					});
+				})
+			});
+		 });
+		setTimeout("check_all()", 500);
+		 
+	});
+	$("input[name=title]").click(function() {
+		select_all($(this).attr("class"));
+	});
+	$("#confirm").click(function() {
+		var auth = '';
+		$("input[type=checkbox]:checked").each(function() {
+			if($(this).val()) {
+				auth += $(this).val() + ';';
+			}
+		});
+		var name = $("#name").val();
+		if(!name) {
+			alert('请选择管理员！');
+			return false;
+		} else {
+			$("#info").text("");
+			$.post('admincp.php?mod=system&act=save&type=auth', {name: name, auth: auth}, function(data){
+				if(data == 1) {
+					$("<span style='color: green'>修改成功！</span>").appendTo($("#info"));
+					location.reload();
+				} else if(data == 3) {
+					$("<span style='color: red'>权限未改变！</span>").appendTo($("#info"));
+				} else {
+					$("<span style='color: red'>修改失败！</span>").appendTo($("#info"));
+				}
+				
+			});
+		}
+	});
+	$("input[type=checkbox]").click(function() {
+		check_all();
+	});
+});
+function check_all() {
+	$("input[name=title]").each(function() {
+		var id = $(this).attr("class");
+		var checkall = true;
+		$(this).removeAttr("checked");
+		$("input[name=" + id +"]").each(function() {
+			if(!$(this).attr("checked")) {
+				checkall = false;
+			}
+		});
+		if(checkall) {
+			$(this).attr("checked", true);
+		}
+	});
+}
+function select_all(mod) {
+	if($("input[class=" + mod + "]").attr("checked")) {
+		$("input[name=" + mod + "]").attr("checked", true);
+	} else {
+		$("input[name=" + mod + "]").removeAttr("checked");
+	}
+}
+</script>

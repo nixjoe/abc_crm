@@ -5,50 +5,7 @@ class systemcontrol extends base {
 		parent::__construct();
 		$this->load(MODEL_GLOBAL_CONFIG);
 	}
-	//版本控制
-	public function onversion(){
-		$type = $this->input('type');
-		if ($type == 'list') {
-			$page = $_GET['page'];
-			if($_GET['rows'] == '') {
-				$limit = 10;
-			} else {
-				$limit = $_GET['rows']; 
-			}
-			$sidx = $_GET['sidx']; // get index row - i.e. user click to sort 
-			$sord = $_GET['sord']; // get the direction 
-			if(!$sidx) $sidx =1; // connect to the database 
-			$result = $this->load(MODEL_GLOBAL_CONFIG)->getList(GlobalConfigManager::CONFIG_VERSION);
-			$count = count($result); 
-			if($count >0) { 
-				$total_pages = ceil($count/$limit);
-			 } else { 
-			 	$total_pages = 0; 
-			 } 
-			 if ($page > $total_pages) $page=$total_pages; 
-			 $start = $limit*$page - $limit; // do not put $limit*($page - 1)
-			 if($start < 0) $start = 0;
-			 $result = $this->load(MODEL_GLOBAL_CONFIG)->getList(GlobalConfigManager::CONFIG_VERSION, $start, $limit);
-			 $response = array();
-			 $response['page'] = $page; 
-			 $response['total'] = $total_pages;
-			 $response['records'] = $count; 
-			 $i=0; 
-			 foreach ($result as $version) {
-			 	$arr = explode('_', $version['p_key']);
-			 	$key = substr($version['p_key'], strlen(GlobalConfigManager::CONFIG_VERSION));
-			 	$url_key = GlobalConfigManager::CONFIG_UPDATE_URL.$key;
-			 	$url = $this->load(MODEL_GLOBAL_CONFIG)->getValue($url_key);
-			 	$max_version_key = GlobalConfigManager::MAX_CONFIG_VERSION.$key;
-			 	$max_version = $this->load(MODEL_GLOBAL_CONFIG)->getValue($max_version_key);
-			 	$response['rows'][$i]['cell']=array(
-			 		$arr[3], $arr[2], $arr[1],
-			 		$version['p_value'], $max_version, $url); 
-			 	$i++; 
-			 }
-			 return $response;
-		}
-	}
+
 	public function onsave(){
 		$operation = $this->input('oper');
 		if($operation == 'add' || $operation == 'edit') {
@@ -232,79 +189,5 @@ class systemcontrol extends base {
 			}
 		}
 	}
-	
-
-	
-	
-	public function onactivities() {
-		$op = $this->input('op');
-//		$cache_helper = GlobalAppConfig::getInstance()->getDefaultCacheInstance();
-		$cache_helper = load(MODEL_ADMIN_USER);
-		if ($op == 'add') {
-			$name = $this->input('name');
-			$code = $this->input('name');
-			$pop_1 = $this->input('pop_1');
-			if (!empty($pop_1)) {
-				$pop_1 = 1;
-			} else {
-				$pop_1 = 0;
-			}
-			$pop_2 = $this->input('pop_2');
-			if ($pop_1) {
-				$pop_2 = 0;
-			}
-			if (empty($pop_2)) {
-				$pop_2 = 0;
-			}
-			$new = $this->input('new');
-			$new = !empty($new) ? 1 : 0;
-			$open = $this->input('open');
-			$open = !empty($open) ? 1 : 0;
-			$sql = "insert into `ra`.`activity_center_config` (`name`, `code`, `pop_1`, `pop_2`, `new`, `open`) 
-					values ('$name', '$code', $pop_1, $pop_2, $new, $open)";
-			query($sql);
-		} elseif ($op == 'delete') {
-			$id = $this->input('id');
-			query("delete from `ra`.`activity_center_config` where `id` = $id");
-		} elseif ($op == 'mdelete') {
-			$ids = $this->input('id');
-			if (!empty($ids)) {
-				foreach ($ids as $id) {
-					query("delete from `ra`.`activity_center_config` where `id` = $id");
-				}
-			}
-		} elseif ($op == 'modify') {
-			
-		} elseif ($op == 'deploy') {
-			$data = query_slave("select * from `ra`.`activity_center_config`");
-			$res = array();
-			foreach ($data as $row) {
-				$res[$row['name']] = $row;
-			}
-			$cache_helper->setToCache(CK_ACTIVIY_CENTER, $res, 0);
-		} elseif ($op == 'recover') {
-			$sql = "truncate table `ra`.`activity_center_config`";
-			query($sql);
-			$data = $cache_helper->getFromCache(CK_ACTIVIY_CENTER);
-			$sql = "insert into `ra`.`activity_center_config` (`name`, `code`, `pop_1`, `pop_2`, `open`, `new`) values ";
-			$values = array();
-			foreach ($data as $row) {
-				$values[] = "('{$row['name']}', '{$row['code']}', {$row['pop_1']}, {$row['pop_2']}, {$row['open']}, {$row['new']})";
-			}
-			$values = implode(', ', $values);
-			$sql .= $values;
-// 			$sql .= " on duplicate key update 
-// 					`name` = values(`name`), 
-// 					`code` = values(`code`), 
-// 					`pop_1` = values(`pop_1`),
-// 					`pop_2` = values(`pop_2`), 
-// 					`open` = values(`open`), 
-// 					`new` = values(`new`)";
-			query($sql);
-		}
-		$GLOBALS['view_datas']['result_1'] = query_slave("select * from `ra`.`activity_center_config`");
-		$GLOBALS['view_datas']['result_2'] = $cache_helper->getFromCache(CK_ACTIVIY_CENTER);
-	}
-	
 
 }

@@ -1,0 +1,124 @@
+<!--{template header}-->
+<style>
+table {
+	width: 100%;
+	font-size: 0.923em;
+	margin: 0px 0px 10px;
+}
+
+table td, table th {
+	border: 1px solid #BEBFB9;
+	vertical-align: middle;
+	padding: 8px 10px;
+	color: black;
+}
+
+table th {
+	text-transform: uppercase;
+	background: #E1E2DC;
+	font-weight: normal;
+	border-right: none;
+	padding: 3px 10px;
+	text-align: center;
+	cursor: pointer;
+}
+
+table td {
+	font-weight: normal;
+	border-right: none;
+	border-top: none;
+	padding: 3px 10px;
+	text-align: left;
+}
+
+table th:last-child, table td:last-child {
+	border-right: 1px solid #BEBFB9;
+}
+
+tr.odd {
+	background: white;
+}
+
+tr.even {
+	background: #F3F4EE;
+}
+
+tr:hover {
+	background: #E4E4E4;
+}
+</style>
+<!--{loop $actions $action_module $module_actions}-->
+<form method="post" action="admincp.php?mod=system&act=menu">
+	<fieldset>
+		<legend id="{$action_module}" class="togglable">
+			<a href="#">
+				<!--{if $action_module == 'user'}-->
+				玩家信息
+				<!--{elseif $action_module == 'customer'}-->
+				客服支撑
+				<!--{elseif $action_module == 'product'}-->
+				产品支撑
+				<!--{elseif $action_module == 'operation'}-->
+				运营支撑
+				<!--{elseif $action_module == 'system'}-->
+				系统管理
+				<!--{elseif $action_module == 'monitor'}-->
+				系统监控
+				<!--{elseif $action_module == 'analysis'}-->
+				分析工具
+				<!--{/if}-->
+			</a>
+		</legend>
+		<table style="display: none;">
+			<thead>
+				<tr>
+					<th>一级菜单</th>
+					<th>二级菜单</th>
+					<th>排序</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--{loop $module_actions $weight $action}-->
+				<!--{if isset($lang[$action_module . '_' . $action])}-->
+				<tr {if ($weight % 2 == 0)}class="even"{else}class="odd"{/if}>
+					<td>
+					<!--{if $action_module == 'user'}-->
+		  			玩家信息
+		  			<!--{elseif $action_module == 'customer'}-->
+		  			客服支撑
+		  			<!--{elseif $action_module == 'product'}-->
+		  			产品支撑
+		  			<!--{elseif $action_module == 'operation'}-->
+		  			运营支撑
+		  			<!--{elseif $action_module == 'system'}-->
+		  			系统管理
+		  			<!--{elseif $action_module == 'monitor'}-->
+		  			系统监控
+		  			<!--{elseif $action_module == 'analysis'}-->
+		  			分析工具
+		  			<!--{/if}-->
+					</td>
+					<td>{php echo $lang[$action_module . '_' . $action]}</td>
+					<td>
+						<input type="text" name="weight[{$weight}]" value="{$weight}" style="margin:0px;" />
+					</td>
+				</tr>
+				<!--{/if}-->
+				<!--{/loop}-->
+			</tbody>
+		</table>
+	</fieldset>
+	<div style="display: none;">
+		<button class="btn btn-primary" name="op" value="save">保存修改</button>
+		<input type="hidden" name="module" value="{$action_module}" />
+	</div>
+</form>
+<!--{/loop}-->
+<script>
+$('#menu').attr('class', 'active');
+$('legend.togglable').click(function() {
+	$(this).siblings('table').toggle();
+	$(this).parent().siblings('div').toggle();
+});
+</script>
+<!--{template footer}-->

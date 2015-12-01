@@ -1,0 +1,56 @@
+<!--{template header}-->
+<br />
+<table class="table table-striped">
+	<tr>
+		<td align="left">
+		管理员信息
+		</td>
+	</tr>
+	<tr>
+		<td><tr/>
+			<table  class="list" width="100%" border="1" cellspacing="0" cellpadding="5">
+				<tr>
+					<th>管理员名称</th>
+					<th>语言</th>
+					<th>创建时间</th>
+					<th>最后修改时间</th>
+					<th></th>
+				</tr>
+				<!--{loop $admins $admin}-->
+				<tr>
+					<td>{$admin['name']}</td>
+					<td>{$admin['language']}</td>
+					<td>{php echo date('Y-m-d H:i:s', $admin['timestamp'])}</td>
+					<td>{php echo date('Y-m-d H:i:s', $admin['last_update'])}</td>
+					<td><a id="delete" class="btn-danger" style="cursor: pointer{if !in_array('deleteadmin', $actions['system'])};display: none{/if}" onclick="delete_admin('$admin['name']')">删除</a>
+					</td>
+				</tr>
+				<!--{/loop}-->
+			</table>
+			<input type="hidden" name="op" id="op" value="edit">
+		</td>
+	</tr>
+	</table>
+<!--{template footer}-->
+<script>
+  $(document).ready(function() {
+	 $("#viewadmin").attr("class", "active");
+  });
+  function delete_admin(admin_name) {
+	  if(confirm('确定删除该管理员？')) {
+		  $.post('admincp.php?mod=system&act=deleteadmin', {admin_name: admin_name}, function(data) {
+			  $("#info").css("display", "");
+			  if(data == 1) {
+				 alert("未传递管理员姓名！");
+			  } else if(data == 2) {
+				 alert("没有找到管理员！");
+			  } else if(data == 3) {
+				 alert("删除成功！");
+				 location.reload();
+			  } else {
+				 alert("删除失败！");
+			  }
+		  });
+	  }
+  }
+ </script>
