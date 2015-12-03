@@ -1,0 +1,68 @@
+<!--{template header}-->
+<br />
+<form action="admincp.php?mod=tiger&act=user" method="post">
+&nbsp;查询条件：&nbsp;&nbsp;
+	<select name="key">
+		<option value="order_id">订单号</option>
+		<option value="channel_trans_id">平台订单号</option>
+		<option value="channel_user_id">平台用户ID</option>
+	</select>
+	&nbsp;&nbsp;<input type="text" value="" name="value" id="value"/>&nbsp;&nbsp;
+	<input type="submit" value="查询" id="confirm"/>
+</form>
+<table class="table table-striped">
+	<tr>
+		<td align="left">
+		客户信息
+		</td>
+	</tr>
+	<tr>
+		<td><hr/>
+			<table  class="list" width="100%" border="0" cellspacing="0" cellpadding="5">
+				<tr>
+					<td width=100>客户归属</td>
+					<td width=100>昵称</td>
+					<td width=100>姓名</td>
+				</tr>
+				<!--{loop $res $user}-->
+				<tr>
+					<td>{$user['username']}</td>
+					<td>{$user['real_name']}</td>
+					<td>{$user['balance']}</td>
+				</tr>
+				<!--{/loop}-->
+			</table>
+			<input type="hidden" name="op" id="op" value="edit">
+		</td>
+	</tr>
+	</table>
+<!--{template footer}-->
+<script>
+  $(document).ready(function() {
+	 $("#battlelog").attr("class", "active");
+	 $("#start_date").datepicker();
+     $("#start_date").datepicker("option", "dateFormat", "yy-mm-dd");
+     $("#start_date").datepicker('setDate', "{$start_date}");
+	 $("#end_date").datepicker();
+	 $("#end_date").datepicker("option", "dateFormat", "yy-mm-dd");
+	 $("#end_date").datepicker('setDate', "{$end_date}");
+  });
+function find_log(log_id, user_id, has_log)
+{
+	if(has_log == 1)
+	{
+		$.post('admincp.php?mod=user&act=battlelog&type=battle_detail', 
+		{
+			log_id: log_id, 
+			user_id: user_id
+		}, 
+		function(data) {
+			alert(data);
+		});
+	}
+	else
+	{
+		alert('没有日志');
+	}
+}   
+</script>

@@ -1,0 +1,56 @@
+<!--{template header}-->
+<br />
+<form action="admincp.php?mod=tiger&act=user2" method="post">
+	&nbsp;查询条件：&nbsp;&nbsp;
+	<select name="key">
+		<option value="order_id">订单号</option>
+		<option value="channel_trans_id">平台订单号</option>
+		<option value="channel_user_id">平台用户ID</option>
+	</select>
+	&nbsp;&nbsp;<input type="text" value="" name="value" id="value"/>&nbsp;&nbsp;
+	<input type="submit" value="查询" id="confirm"/>
+</form>
+&nbsp;订单状态：&nbsp;&nbsp;
+<select name="status" id="status">
+		<option value="all">全部</option>
+		<option value="yes">成功</option>
+		<option value="no">不成功</option>
+</select><br></br>
+<table id="tran"></table> 
+<div id="ptran"></div><br />
+ <!--{template footer}-->
+<script>
+
+  jQuery("#tran").jqGrid({ 
+  	url:'admincp.php?mod=tiger&act=user2&type=list', 
+  	datatype: "json", 
+  	colNames:['客户归属','昵称','姓名','用户分类','用户属性','注册邮箱','手机号','注册时间','模拟账户','真实账户','入金时间','出金时间','审核状态','注册来源'], 
+  	colModel:[ {name:'user_affiliation',index:'user_affiliation', width:50},
+				{name:'user_name',index:'user_name', width:50},
+				{name:'realname',index:'realname', width:50},
+				{name:'user_classify',index:'user_classify', width:50},
+				{name:'user_attribute',index:'user_attribute', width:50},
+				{name:'email',index:'email', width:50},
+				{name:'phone',index:'phone', width:50},
+				{name:'register_time',index:'register_time', width:50},
+				{name:'mt4',index:'mt4', width:50},
+				{name:'mt4_real',index:'mt4_real', width:50},
+				{name:'pay_time',index:'pay_time', width:50},
+				{name:'pay_out',index:'pay_out', width:50},
+				{name:'status',index:'status', width:50},
+				{name:'url_from',index:'url_from', width:50},
+
+  	rowNum:10, 
+  	rowList:[10,20,30,60,100,500,1000,3000], 
+  	pager: '#ptran', 
+  	sortname: 'register_time', 
+  	viewrecords: true,
+  	sortorder: "desc",
+  	height: 'auto',
+  	caption: "客户信息" 
+  }); 
+  jQuery("#tran").jqGrid('navGrid',"#ptran",{edit:false,add:false,del:false}); 
+  	  
+  $(".ui-pg-selbox").css({"padding": "0","width": "80px"});
+  $(".ui-pg-input").css("width","13px");
+ </script>
