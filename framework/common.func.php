@@ -111,6 +111,7 @@ function getRandomString($len, $include_special_characters=false)
 #  *
 #  * @return  string       $str         处理后字串
 #  */
+/**
  function make_semiangle($str)
  {
      $arr = array('０' => '0', '１' => '1', '２' => '2', '３' => '3', '４' => '4',
@@ -138,6 +139,7 @@ function getRandomString($len, $include_special_characters=false)
   
     return strtr($str, $arr);
 }
+**/
 /**
  * 获取客户端访问的ip地址，即使用户隐藏在代理的后面也能获取到相应的ip地址
  */

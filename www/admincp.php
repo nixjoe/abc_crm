@@ -57,6 +57,7 @@ $allow_action = array('index','quit','search','save','login');
 if(empty($actions)) {
 	$actions = array('user' => array('index'));
 }
+/**
 if(!in_array($action, $allow_action) && !in_array($action, $actions[$module])) {
 	$action = 'limiterror';
 	$GLOBALS['TEMPLATE_FILE'] = TEMPLATE_DIR.'/limiterror.htm';
@@ -64,6 +65,7 @@ if(!in_array($action, $allow_action) && !in_array($action, $actions[$module])) {
 	include renderTemplate($module, $action);
 	return;
 }
+**/
 if(in_array('remove', $actions[$module])){
 	$has_remove=true;
 }

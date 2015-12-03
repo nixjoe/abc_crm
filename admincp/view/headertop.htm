@@ -21,8 +21,24 @@
 					<a href="admincp.php?mod=user&act=profile" class="navbar-link">个人信息</a> / <a href="admincp.php?mod=user&act=quit" class="navbar-link">退出</a>
 				</p>
 				<ul class="nav">
-					<li><a href="admincp.php?mod=user&act=index">销售支撑</a></li>
-					<li><a href="admincp.php?mod=user&act=index">代理商支撑</a></li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">销售支撑</a>
+						<ul class="dropdown-menu">
+							<li><a href="admincp.php?mod=tiger&act=user">客户信息</a></li>						
+							<li><a href="admincp.php?mod=trans&act=info">交易信息</a></li>
+							<li><a href="admincp.php?mod=cash&act=info">出入金信息</a></li>
+							<li><a href="admincp.php?mod=master&act=revenu">高手佣金</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">代理商支撑</a>
+						<ul class="dropdown-menu">
+							<li><a href="admincp.php?mod=agent&act=mgr">团队人员</a></li>
+							<li><a href="admincp.php?mod=custom&act=info">客户信息</a></li>						
+							<li><a href="admincp.php?mod=trans&act=info">交易信息</a></li>
+							<li><a href="admincp.php?mod=cash&act=info">出入金信息</a></li>
+							<li><a href="admincp.php?mod=master&act=revenu">高手佣金</a></li>
+							<li><a href="admincp.php?mod=agent&act=shouldget">我的返佣</a></li>
+						</ul>
+					</li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">系统管理</a>
 						<ul class="dropdown-menu">
 							<li><a href="admincp.php?mod=system&act=viewadmin">查看管理员</a></li>						
