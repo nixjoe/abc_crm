@@ -12,8 +12,13 @@ class tigercontrol extends base {
         $res = load(MODEL_TIGER_USER) -> executeQuery($sql);
         $GLOBALS['view_datas'] = array('res' => $res);
     }
+
+    public function onuser3(){
+
+    }
     
-    public function onuser2() {        
+    public function onuser2() {
+    /**        
         //以下组织分页数据
         $type = $this->input('type');
 		if($type == 'list') {
@@ -50,6 +55,7 @@ class tigercontrol extends base {
 			 	$i++; 
 			}
 			return $response;
+			**/
     }
 }
 ?>
