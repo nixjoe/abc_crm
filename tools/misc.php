@@ -23,7 +23,7 @@ $cols[]='url_from';
 
 foreach ($cols as $col)
 {
-  echo "{name:'$col',index:'$col', width:50},\n";     
+  echo $col.',';     
 }
                             
 echo array_keys($newarr);                            

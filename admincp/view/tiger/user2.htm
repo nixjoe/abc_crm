@@ -47,19 +47,19 @@
     datatype: "json", 
     colNames:['客户归属','昵称','姓名','用户分类','用户属性','注册邮箱','手机号','注册时间','模拟账户','真实账户','入金时间','出金时间','审核状态','注册来源'], 
     colModel:[ {name:'user_affiliation',index:'user_affiliation', width:50},
-        {name:'user_name',index:'user_name', width:50},
+        {name:'user_name',index:'user_name', width:100},
         {name:'realname',index:'realname', width:50},
         {name:'user_classify',index:'user_classify', width:50},
         {name:'user_attribute',index:'user_attribute', width:50},
-        {name:'email',index:'email', width:50},
-        {name:'phone',index:'phone', width:50},
-        {name:'register_time',index:'register_time', width:50},
+        {name:'email',index:'email', width:200},
+        {name:'phone',index:'phone', width:100},
+        {name:'register_time',index:'register_time', width:100},
         {name:'mt4',index:'mt4', width:50},
         {name:'mt4_real',index:'mt4_real', width:50},
         {name:'pay_time',index:'pay_time', width:50},
-        {name:'pay_out',index:'pay_out', width:50},
+        {name:'pay_out',index:'pay_out', width:100},
         {name:'status',index:'status', width:50},
-        {name:'url_from',index:'url_from', width:50}],
+        {name:'url_from',index:'url_from', width:400}],
 
     rowNum:10, 
     rowList:[10,20,30,60,100,500,1000,3000], 
@@ -68,6 +68,7 @@
     viewrecords: true,
     sortorder: "desc",
     height: 'auto',
+    width: 'auto',
     caption: "客户信息" 
   }); 
   jQuery("#tran").jqGrid('navGrid',"#ptran",{edit:false,add:false,del:false}); 

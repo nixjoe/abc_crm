@@ -1,9 +1,8 @@
 <?php
 $table_defines = array(
-//	"fbdata",
-	"device_data",
+	"custorm",
 );
-$config = parse_ini_file('D:\workspace\elexpublish\xpub\etc\config_1.ini',true);
+$config = parse_ini_file('D:\workspace\abc_crm\etc\config_1.ini',true);
 $content = "";
 $droped_dbs = array();
 $conn = @mysql_connect("localhost:3306", "root", "");
