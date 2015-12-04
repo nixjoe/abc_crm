@@ -10,7 +10,7 @@ $GLOBALS['THRIFT_ROOT'] = FRAMEWORK . '/thrift';
 //定义模块类型
 define('SERVER_ID',1);
 define('MODEL_ADMIN_USER', 'admin_user');
-define('MODEL_TIGER_USER', 'user');
+define('MODEL_TIGER_USER', 'custorm');
 
 //错误码定义
 define('ERROR_MEMCACHE', 21);
